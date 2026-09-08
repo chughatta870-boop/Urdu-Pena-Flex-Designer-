@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F5132">
+<meta name="description" content="اردو پینا فلیکس، پوسٹر اور بینر ڈیزائن بنانے والی مکمل آفلائن ایپ">
+<title>اردو پینا فلیکس ڈیزائنر</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ===== TOP APP BAR ===== -->
+  <header class="topbar">
+    <button class="icon-btn" id="btnBack" aria-label="واپس" hidden>➜</button>
+    <h1 class="topbar-title" id="topbarTitle">اردو پینا فلیکس ڈیزائنر</h1>
+    <button class="icon-btn" id="btnTheme" aria-label="تھیم بدلیں">🌓</button>
+  </header>
+
+  <!-- ===== SCREEN: DASHBOARD ===== -->
+  <main class="screen active" id="screen-dashboard">
+    <div class="hero">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <p class="hero-eyebrow">خوش آمدید</p>
+      <h2 class="hero-title">آج کیا ڈیزائن بنائیں؟</h2>
+      <p class="hero-sub" id="schoolNameHero">اسکول کی معلومات محفوظ کریں تاکہ ڈیزائن خودکار مکمل ہوں</p>
+    </div>
+
+    <div class="tile-grid">
+      <button class="tile" data-nav="new-design"><span class="tile-icon">➕</span><span>نیا ڈیزائن</span></button>
+      <button class="tile" data-nav="templates"><span class="tile-icon">🎨</span><span>ٹیمپلیٹس</span></button>
+      <button class="tile" data-nav="ai-assistant"><span class="tile-icon">🤖</span><span>AI ڈیزائن بنائیں</span></button>
+      <button class="tile" data-nav="my-designs"><span class="tile-icon">📂</span><span>میرے ڈیزائن</span></button>
+      <button class="tile" data-nav="recent"><span class="tile-icon">🕘</span><span>حالیہ ڈیزائن</span></button>
+      <button class="tile" data-nav="favorites"><span class="tile-icon">⭐</span><span>پسندیدہ</span></button>
+      <button class="tile" data-nav="photo-design"><span class="tile-icon">🖼️</span><span>تصویر سے ڈیزائن</span></button>
+      <button class="tile" data-nav="library"><span class="tile-icon">📚</span><span>میری لائبریری</span></button>
+      <button class="tile" data-nav="school-info"><span class="tile-icon">🏫</span><span>ادارے کی معلومات</span></button>
+      <button class="tile" data-nav="settings"><span class="tile-icon">⚙️</span><span>سیٹنگز</span></button>
+    </div>
+  </main>
+
+  <!-- ===== SCREEN: NEW DESIGN (size picker) ===== -->
+  <main class="screen" id="screen-new-design">
+    <h2 class="section-title">سائز منتخب کریں</h2>
+    <div class="size-grid" id="sizeGrid"></div>
+    <div class="custom-size-box">
+      <h3>Custom سائز</h3>
+      <div class="row">
+        <input type="number" id="customW" placeholder="چوڑائی (px)" inputmode="numeric">
+        <span>×</span>
+        <input type="number" id="customH" placeholder="اونچائی (px)" inputmode="numeric">
+        <button class="btn-primary" id="btnCustomSize">بنائیں</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== SCREEN: TEMPLATES ===== -->
+  <main class="screen" id="screen-templates">
+    <div class="chip-row" id="templateCats"></div>
+    <div class="template-grid" id="templateGrid"></div>
+  </main>
+
+  <!-- ===== SCREEN: MY DESIGNS ===== -->
+  <main class="screen" id="screen-my-designs">
+    <div class="search-row">
+      <input type="search" id="designSearch" placeholder="ڈیزائن تلاش کریں...">
+    </div>
+    <div class="design-grid" id="designGrid"></div>
+    <p class="empty-hint" id="designEmptyHint" hidden>ابھی کوئی محفوظ شدہ ڈیزائن نہیں۔ نیا ڈیزائن بنائیں!</p>
+  </main>
+
+  <!-- ===== SCREEN: SCHOOL INFO ===== -->
+  <main class="screen" id="screen-school-info">
+    <h2 class="section-title">ادارے کی معلومات</h2>
+    <div class="form-card">
+      <label>School Name<input type="text" id="siName" value="Government High School Chak No.124 NB"></label>
+      <label>EMIS Code<input type="text" id="siEmis" value="38440014"></label>
+      <label>Tehsil<input type="text" id="siTehsil" value="Sillanwali"></label>
+      <label>District<input type="text" id="siDistrict" value="Sargodha"></label>
+      <label>Headmaster Name<input type="text" id="siHead"></label>
+      <label>School Address<input type="text" id="siAddress"></label>
+      <label>School Logo
+        <input type="file" id="siLogo" accept="image/*">
+      </label>
+      <img id="siLogoPreview" class="logo-preview" hidden>
+      <button class="btn-primary" id="btnSaveSchoolInfo">محفوظ کریں</button>
+    </div>
+
+    <h2 class="section-title" style="margin-top:22px">🎨 برانڈ کٹ (Brand Kit)</h2>
+    <div class="form-card">
+      <div class="row">
+        <label style="flex:1">پرائمری رنگ<input type="color" id="brandPrimary" value="#0F5132"></label>
+        <label style="flex:1">سیکنڈری رنگ<input type="color" id="brandSecondary" value="#C9A227"></label>
+      </div>
+      <label>ڈیفالٹ فونٹ
+        <select id="brandDefaultFont"></select>
+      </label>
+      <label>نیا فونٹ اپلوڈ کریں (.ttf / .otf / .woff / .woff2)
+        <input type="text" id="brandFontName" placeholder="فونٹ کا نام لکھیں (مثال: میرا فونٹ)">
+        <input type="file" id="brandFontFile" accept=".ttf,.otf,.woff,.woff2">
+      </label>
+      <div id="brandFontList" class="list-select"></div>
+      <p class="hint">برانڈ کٹ کے رنگ اور فونٹس تمام نئے ڈیزائنز میں فوری طور پر دستیاب ہوں گے۔ ہر فونٹ فائل اسٹوریج میں محفوظ ہوتی ہے، اس لیے 2-3 فونٹس تک محدود رکھیں۔</p>
+      <button class="btn-primary" id="btnSaveBrandKit">برانڈ کٹ محفوظ کریں</button>
+    </div>
+  </main>
+
+  <!-- ===== SCREEN: SETTINGS ===== -->
+  <main class="screen" id="screen-settings">
+    <h2 class="section-title">سیٹنگز</h2>
+    <div class="form-card">
+      <label class="switch-row"><span>ڈارک موڈ</span><input type="checkbox" id="setDark"></label>
+      <label>Default Export Quality
+        <select id="setQuality">
+          <option value="1">Standard</option>
+          <option value="2" selected>High Quality</option>
+          <option value="3">Print Quality</option>
+        </select>
+      </label>
+      <label class="switch-row"><span>ایکسپورٹ پر واٹرمارک</span><input type="checkbox" id="setWatermark" checked></label>
+      <label>Watermark Text<input type="text" id="setWatermarkText" value="M Ijaz · GHS 124/NB"></label>
+      <button class="btn-secondary" id="btnBackupData">Backup (Export JSON)</button>
+      <button class="btn-secondary" id="btnRestoreData">Restore (Import JSON)</button>
+      <input type="file" id="restoreFile" accept="application/json" hidden>
+      <p class="hint">اسٹوریج استعمال: <span id="storageUsage">—</span></p>
+      <p class="hint">اردو پینا فلیکس ڈیزائنر — نسخہ 1.0 · M Ijaz · GHS 124/NB</p>
+    </div>
+  </main>
+
+  <!-- ===== SCREEN: EDITOR ===== -->
+  <main class="screen" id="screen-editor">
+    <div class="editor-wrap">
+
+      <div class="editor-topbar">
+        <button class="icon-btn sm" id="btnUndo" title="Undo">↺</button>
+        <button class="icon-btn sm" id="btnRedo" title="Redo">↻</button>
+        <div class="spacer"></div>
+        <button class="icon-btn sm" id="btnLayers" title="Layers">🗂️</button>
+        <button class="icon-btn sm" id="btnGuides" title="Grid">📐</button>
+        <button class="icon-btn sm" id="btnSaveProject" title="Save">💾</button>
+        <button class="icon-btn sm" id="btnExport" title="Export">⬇️</button>
+      </div>
+
+      <div class="canvas-viewport" id="canvasViewport">
+        <div class="canvas-stage" id="canvasStage"></div>
+      </div>
+
+      <div class="editor-toolbar" id="editorToolbar">
+        <button class="tbtn" data-tool="text">📝<span>Text</span></button>
+        <button class="tbtn" data-tool="image">🖼️<span>تصویر</span></button>
+        <button class="tbtn" data-tool="logo">🏫<span>لوگو</span></button>
+        <button class="tbtn" data-tool="shape">🔷<span>Shape</span></button>
+        <button class="tbtn" data-tool="background">🌄<span>BG</span></button>
+        <button class="tbtn" data-tool="qr">▦<span>QR</span></button>
+        <button class="tbtn" data-tool="ai">🤖<span>AI</span></button>
+        <button class="tbtn" data-tool="align">📐<span>Align</span></button>
+        <button class="tbtn" data-tool="arrange" id="btnArrangeDup">✂️<span>Copy/Del</span></button>
+      </div>
+
+      <!-- bottom sheet for contextual property panels -->
+      <div class="sheet-backdrop" id="sheetBackdrop"></div>
+      <div class="bottom-sheet" id="bottomSheet">
+        <div class="sheet-handle"></div>
+        <div class="sheet-content" id="sheetContent"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== BOTTOM NAV ===== -->
+  <nav class="bottom-nav" id="bottomNav">
+    <button class="nav-btn active" data-nav="dashboard"><span>🏠</span>Home</button>
+    <button class="nav-btn" data-nav="templates"><span>🎨</span>Templates</button>
+    <button class="nav-btn nav-create" data-nav="new-design"><span>➕</span>Create</button>
+    <button class="nav-btn" data-nav="my-designs"><span>📂</span>My Designs</button>
+    <button class="nav-btn" data-nav="settings"><span>⚙️</span>Settings</button>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
