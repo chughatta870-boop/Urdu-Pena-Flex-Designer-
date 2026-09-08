@@ -1,0 +1,48 @@
+{
+  "id": "./",
+  "name": "اردو پینا فلیکس ڈیزائنر",
+  "short_name": "پینا فلیکس",
+  "description": "اردو پینا فلیکس، پوسٹر، بینر اور سرٹیفکیٹ بنانے والی مکمل آفلائن ایپ — RTL سپورٹ اور AI اسسٹنٹ کے ساتھ",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "orientation": "portrait",
+  "background_color": "#F3EFE4",
+  "theme_color": "#0F5132",
+  "dir": "rtl",
+  "lang": "ur-PK",
+  "categories": ["graphics", "productivity", "education"],
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-192-maskable.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "./icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "نیا ڈیزائن",
+      "short_name": "نیا",
+      "description": "نیا پینا فلیکس ڈیزائن شروع کریں",
+      "url": "./index.html?action=new-design",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "ٹیمپلیٹس",
+      "short_name": "ٹیمپلیٹس",
+      "description": "ریڈی میڈ ٹیمپلیٹس دیکھیں",
+      "url": "./index.html?action=templates",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "میرے ڈیزائن",
+      "short_name": "میرے ڈیزائن",
+      "description": "محفوظ شدہ ڈیزائن کھولیں",
+      "url": "./index.html?action=my-designs",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    { "src": "./icons/screenshot-1.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow" }
+  ]
+}
